@@ -1,0 +1,1696 @@
+#include "s21_tests.h"
+
+START_TEST(is_equal_001) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 0
+  value_1.bits[0] = 0b00000000000000000000000000000000;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  // 0
+  value_2.bits[0] = 0b00000000000000000000000000000000;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_002) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -0
+  value_1.bits[0] = 0b00000000000000000000000000000000;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000000000000000000000;
+
+  // -0
+  value_2.bits[0] = 0b00000000000000000000000000000000;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_003) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 0
+  value_1.bits[0] = 0b00000000000000000000000000000000;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  // -0
+  value_2.bits[0] = 0b00000000000000000000000000000000;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_004) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -0
+  value_1.bits[0] = 0b00000000000000000000000000000000;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000000000000000000000;
+
+  // 0
+  value_2.bits[0] = 0b00000000000000000000000000000000;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_005) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 0
+  value_1.bits[0] = 0b00000000000000000000000000000000;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  // 5
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_006) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 5
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  // 0
+  value_2.bits[0] = 0b00000000000000000000000000000000;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_007) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 0
+  value_1.bits[0] = 0b00000000000000000000000000000000;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  // -5
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_008) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -5
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000000000000000000000;
+
+  // 0
+  value_2.bits[0] = 0b00000000000000000000000000000000;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_009) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -0
+  value_1.bits[0] = 0b00000000000000000000000000000000;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000000000000000000000;
+
+  // 5
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_010) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 5
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  // -0
+  value_2.bits[0] = 0b00000000000000000000000000000000;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_011) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -0
+  value_1.bits[0] = 0b00000000000000000000000000000000;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000000000000000000000;
+
+  // -5
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_012) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -5
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000000000000000000000;
+
+  // -0
+  value_2.bits[0] = 0b00000000000000000000000000000000;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_013) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 5
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  // 1
+  value_2.bits[0] = 0b00000000000000000000000000000001;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_014) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 1
+  value_1.bits[0] = 0b00000000000000000000000000000001;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  // 5
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_015) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 5
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  // 5
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_016) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -5
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000000000000000000000;
+
+  // -1
+  value_2.bits[0] = 0b00000000000000000000000000000001;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_017) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -1
+  value_1.bits[0] = 0b00000000000000000000000000000001;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000000000000000000000;
+
+  // -5
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_018) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -5
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000000000000000000000;
+
+  // -5
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_019) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -5
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000000000000000000000;
+
+  // 5
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_020) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 5
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  // -5
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_021) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 5
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  // -2
+  value_2.bits[0] = 0b00000000000000000000000000000010;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_022) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -2
+  value_1.bits[0] = 0b00000000000000000000000000000010;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000000000000000000000;
+
+  // 5
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_023) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -5
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000000000000000000000;
+
+  // 2
+  value_2.bits[0] = 0b00000000000000000000000000000010;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_024) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 2
+  value_1.bits[0] = 0b00000000000000000000000000000010;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  // -5
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_025) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 0.5 scale 1
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000010000000000000000;
+
+  // 0.5 scale 1
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000010000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_026) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 0.5 scale 1
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000010000000000000000;
+
+  // 0.05 scale 2
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000100000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_027) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 0.05 scale 2
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000100000000000000000;
+
+  // 0.5 scale 1
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000010000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_028) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -0.5 scale 1
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000010000000000000000;
+
+  // -0.5 scale 1
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000010000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_029) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -0.5 scale 1
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000010000000000000000;
+
+  // -0.05 scale 2
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000100000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_030) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -0.05 scale 2
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000100000000000000000;
+
+  // -0.5 scale 1
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000010000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_031) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 0.5 scale 1
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000010000000000000000;
+
+  // -0.5 scale 1
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000010000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_032) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -0.5 scale 1
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000010000000000000000;
+
+  // 0.5 scale 1
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000010000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_033) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 0.05 scale 2
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000100000000000000000;
+
+  // -0.5 scale 1
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000010000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_034) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -0.5 scale 1
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000010000000000000000;
+
+  // 0.05 scale 2
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000100000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_035) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 0.5 scale 1
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000010000000000000000;
+
+  // -0.05 scale 2
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000100000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_036) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -0.5 scale 2
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000100000000000000000;
+
+  // 0.5 scale 1
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000010000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_037) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -0.1 scale 1
+  value_1.bits[0] = 0b00000000000000000000000000000001;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000010000000000000000;
+
+  // 0.5 scale 1
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000010000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_038) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -0.5 scale 1
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000010000000000000000;
+
+  // 0.1 scale 1
+  value_2.bits[0] = 0b00000000000000000000000000000001;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000010000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_039) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 0.1 scale 1
+  value_1.bits[0] = 0b00000000000000000000000000000001;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000010000000000000000;
+
+  // -0.5 scale 1
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000010000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_040) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 0.5 scale 1
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000010000000000000000;
+
+  // -0.1 scale 1
+  value_2.bits[0] = 0b00000000000000000000000000000001;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000010000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_041) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -0.01 scale 2
+  value_1.bits[0] = 0b00000000000000000000000000000001;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000100000000000000000;
+
+  // 0.5 scale 1
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000010000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_042) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -0.05 scale 2
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000100000000000000000;
+
+  // 0.1 scale 1
+  value_2.bits[0] = 0b00000000000000000000000000000001;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000010000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_043) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 0.01 scale 2
+  value_1.bits[0] = 0b00000000000000000000000000000001;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000100000000000000000;
+
+  // -0.5 scale 1
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000010000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_044) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 0.05 scale 2
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000100000000000000000;
+
+  // -0.1 scale 1
+  value_2.bits[0] = 0b00000000000000000000000000000001;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000010000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_045) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -0.1 scale 1
+  value_1.bits[0] = 0b00000000000000000000000000000001;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000010000000000000000;
+
+  // 0.05 scale 2
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000100000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_046) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -0.5 scale 1
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000010000000000000000;
+
+  // 0.01 scale 2
+  value_2.bits[0] = 0b00000000000000000000000000000001;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000100000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_047) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 0.1 scale 1
+  value_1.bits[0] = 0b00000000000000000000000000000001;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000010000000000000000;
+
+  // -0.05 scale 2
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000100000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_048) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 0.5 scale 1
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000010000000000000000;
+
+  // -0.01 scale 2
+  value_2.bits[0] = 0b00000000000000000000000000000001;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000100000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_049) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 79228162514264337593543950335
+  value_1.bits[0] = 0b11111111111111111111111111111111;
+  value_1.bits[1] = 0b11111111111111111111111111111111;
+  value_1.bits[2] = 0b11111111111111111111111111111111;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  // 79228162514264337593543950334
+  value_2.bits[0] = 0b11111111111111111111111111111110;
+  value_2.bits[1] = 0b11111111111111111111111111111111;
+  value_2.bits[2] = 0b11111111111111111111111111111111;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_050) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 79228162514264337593543950334
+  value_1.bits[0] = 0b11111111111111111111111111111110;
+  value_1.bits[1] = 0b11111111111111111111111111111111;
+  value_1.bits[2] = 0b11111111111111111111111111111111;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  // 79228162514264337593543950335
+  value_2.bits[0] = 0b11111111111111111111111111111111;
+  value_2.bits[1] = 0b11111111111111111111111111111111;
+  value_2.bits[2] = 0b11111111111111111111111111111111;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_051) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  value_1.bits[0] = 0b11111111111111111111111111111111;
+  value_1.bits[1] = 0b11111111111111111111111111111111;
+  value_1.bits[2] = 0b11111111111111111111111111111111;
+  value_1.bits[3] = 0b10000000000000000000000000000000;
+
+  value_2.bits[0] = 0b11111111111111111111111111111111;
+  value_2.bits[1] = 0b11111111111111111111111111111110;
+  value_2.bits[2] = 0b11111111111111111111111111111111;
+  value_2.bits[3] = 0b10000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_052) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  value_1.bits[0] = 0b11111111111111111111111111111111;
+  value_1.bits[1] = 0b11111111111111111111111111111110;
+  value_1.bits[2] = 0b11111111111111111111111111111111;
+  value_1.bits[3] = 0b10000000000000000000000000000000;
+
+  value_2.bits[0] = 0b11111111111111111111111111111111;
+  value_2.bits[1] = 0b11111111111111111111111111111111;
+  value_2.bits[2] = 0b11111111111111111111111111111111;
+  value_2.bits[3] = 0b10000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_053) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  value_1.bits[0] = 0b11111111111111111111111111111111;
+  value_1.bits[1] = 0b11111111111111111111111111111111;
+  value_1.bits[2] = 0b11111111111111111111111111111111;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  value_2.bits[0] = 0b11111111111111111111111111111111;
+  value_2.bits[1] = 0b11111111111111111111111111111111;
+  value_2.bits[2] = 0b11111111111111111111111111111110;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_054) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  value_1.bits[0] = 0b11111111111111111111111111111111;
+  value_1.bits[1] = 0b11111111111111111111111111111111;
+  value_1.bits[2] = 0b11111111111111111111111111111110;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  value_2.bits[0] = 0b11111111111111111111111111111111;
+  value_2.bits[1] = 0b11111111111111111111111111111111;
+  value_2.bits[2] = 0b11111111111111111111111111111111;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_055) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  value_1.bits[0] = 0b11111111111111111111111111111111;
+  value_1.bits[1] = 0b11111111111111111111111111111111;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  value_2.bits[0] = 0b11111111111111111111111111111110;
+  value_2.bits[1] = 0b11111111111111111111111111111111;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_056) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  value_1.bits[0] = 0b11111111111111111111111111111110;
+  value_1.bits[1] = 0b11111111111111111111111111111111;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  value_2.bits[0] = 0b11111111111111111111111111111111;
+  value_2.bits[1] = 0b11111111111111111111111111111111;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_057) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 1234567
+  value_1.bits[0] = 0b00000000000100101101011010000111;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  // 1234567.000 scale 3
+  value_2.bits[0] = 0b01001001100101011111111101011000;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000110000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_058) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 1234567.000 scale 3
+  value_1.bits[0] = 0b01001001100101011111111101011000;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000110000000000000000;
+
+  // 1234567
+  value_2.bits[0] = 0b00000000000100101101011010000111;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_059) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -1234567
+  value_1.bits[0] = 0b00000000000100101101011010000111;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000000000000000000000;
+
+  // -1234567.000 scale 3
+  value_2.bits[0] = 0b01001001100101011111111101011000;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000110000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_060) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -1234567.000 scale 3
+  value_1.bits[0] = 0b01001001100101011111111101011000;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000110000000000000000;
+
+  // -1234567
+  value_2.bits[0] = 0b00000000000100101101011010000111;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_061) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -1234567
+  value_1.bits[0] = 0b00000000000100101101011010000111;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000000000000000000000;
+
+  // 1234567.000 scale 3
+  value_2.bits[0] = 0b01001001100101011111111101011000;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000110000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_062) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 1234567.000 scale 3
+  value_1.bits[0] = 0b01001001100101011111111101011000;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000110000000000000000;
+
+  // -1234567
+  value_2.bits[0] = 0b00000000000100101101011010000111;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_063) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 1.2345678 scale=7
+  value_1.bits[0] = 0b00000000101111000110000101001110;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000001110000000000000000;
+
+  // 1.2345678000 scale=10
+  value_2.bits[0] = 0b11011111110111000001100010110000;
+  value_2.bits[1] = 0b00000000000000000000000000000010;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000010100000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_064) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 1.2345678000 scale=10
+  value_1.bits[0] = 0b11011111110111000001100010110000;
+  value_1.bits[1] = 0b00000000000000000000000000000010;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000010100000000000000000;
+
+  // 1.2345678 scale=7
+  value_2.bits[0] = 0b00000000101111000110000101001110;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000001110000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_065) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -1.2345678 scale=7
+  value_1.bits[0] = 0b00000000101111000110000101001110;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000001110000000000000000;
+
+  // -1.2345678000 scale=10
+  value_2.bits[0] = 0b11011111110111000001100010110000;
+  value_2.bits[1] = 0b00000000000000000000000000000010;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000010100000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_066) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -1.2345678000 scale=10
+  value_1.bits[0] = 0b11011111110111000001100010110000;
+  value_1.bits[1] = 0b00000000000000000000000000000010;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000010100000000000000000;
+
+  // -1.2345678 scale=7
+  value_2.bits[0] = 0b00000000101111000110000101001110;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000001110000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_067) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -1.2345678 scale=7
+  value_1.bits[0] = 0b00000000101111000110000101001110;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000001110000000000000000;
+
+  // 1.2345678000 scale=10
+  value_2.bits[0] = 0b11011111110111000001100010110000;
+  value_2.bits[1] = 0b00000000000000000000000000000010;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000010100000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_068) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 1.2345678000 scale=10
+  value_1.bits[0] = 0b11011111110111000001100010110000;
+  value_1.bits[1] = 0b00000000000000000000000000000010;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000010100000000000000000;
+
+  // -1.2345678 scale=7
+  value_2.bits[0] = 0b00000000101111000110000101001110;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000001110000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_069) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 1234567890.0123456789 scale=10
+  value_1.bits[0] = 0b10101000111001001101010100010101;
+  value_1.bits[1] = 0b10101011010101001010100110001100;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000010100000000000000000;
+
+  // 1.0234567890123456789 scale=19
+  value_2.bits[0] = 0b01100000011011011000000100010101;
+  value_2.bits[1] = 0b10001110000010000111110101000101;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000100110000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_070) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -1234567890.0123456789 scale=10
+  value_1.bits[0] = 0b10101000111001001101010100010101;
+  value_1.bits[1] = 0b10101011010101001010100110001100;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000010100000000000000000;
+
+  // 1.0234567890123456789 scale=19
+  value_2.bits[0] = 0b01100000011011011000000100010101;
+  value_2.bits[1] = 0b10001110000010000111110101000101;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000100110000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_071) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -0.05 scale 2
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000100000000000000000;
+
+  // -0.5 scale 1
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000010000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_072) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 0.05 scale 2
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000100000000000000000;
+
+  // 0.5 scale 1
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000010000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_073) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  value_1.bits[0] = 0b11111111111111111111111111111111;
+  value_1.bits[1] = 0b11111111111111111111111111111111;
+  value_1.bits[2] = 0b11111111111111111111111111111111;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  value_2.bits[0] = 0b11111111111111111111111111111111;
+  value_2.bits[1] = 0b11111111111111111111111111111111;
+  value_2.bits[2] = 0b11111111111111111111111111111111;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_equal_074) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  value_1.bits[0] = 0b11111111111111111111111111111111;
+  value_1.bits[1] = 0b11111111111111111111111111111111;
+  value_1.bits[2] = 0b11111111111111111111111111111111;
+  value_1.bits[3] = 0b10000000000000000000000000000000;
+
+  value_2.bits[0] = 0b11111111111111111111111111111111;
+  value_2.bits[1] = 0b11111111111111111111111111111111;
+  value_2.bits[2] = 0b11111111111111111111111111111111;
+  value_2.bits[3] = 0b10000000000000000000000000000000;
+
+  flag_error = s21_is_equal(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+Suite *suite_is_equal(void) {
+  Suite *s = suite_create("suite_is_equal");
+  TCase *tc = tcase_create("case_is_equal");
+
+  tcase_add_test(tc, is_equal_001);
+  tcase_add_test(tc, is_equal_002);
+  tcase_add_test(tc, is_equal_003);
+  tcase_add_test(tc, is_equal_004);
+  tcase_add_test(tc, is_equal_005);
+  tcase_add_test(tc, is_equal_006);
+  tcase_add_test(tc, is_equal_007);
+  tcase_add_test(tc, is_equal_008);
+  tcase_add_test(tc, is_equal_009);
+  tcase_add_test(tc, is_equal_010);
+  tcase_add_test(tc, is_equal_011);
+  tcase_add_test(tc, is_equal_012);
+  tcase_add_test(tc, is_equal_013);
+  tcase_add_test(tc, is_equal_014);
+  tcase_add_test(tc, is_equal_015);
+  tcase_add_test(tc, is_equal_016);
+  tcase_add_test(tc, is_equal_017);
+  tcase_add_test(tc, is_equal_018);
+  tcase_add_test(tc, is_equal_019);
+  tcase_add_test(tc, is_equal_020);
+  tcase_add_test(tc, is_equal_021);
+  tcase_add_test(tc, is_equal_022);
+  tcase_add_test(tc, is_equal_023);
+  tcase_add_test(tc, is_equal_024);
+  tcase_add_test(tc, is_equal_025);
+  tcase_add_test(tc, is_equal_026);
+  tcase_add_test(tc, is_equal_027);
+  tcase_add_test(tc, is_equal_028);
+  tcase_add_test(tc, is_equal_029);
+  tcase_add_test(tc, is_equal_030);
+  tcase_add_test(tc, is_equal_031);
+  tcase_add_test(tc, is_equal_032);
+  tcase_add_test(tc, is_equal_033);
+  tcase_add_test(tc, is_equal_034);
+  tcase_add_test(tc, is_equal_035);
+  tcase_add_test(tc, is_equal_036);
+  tcase_add_test(tc, is_equal_037);
+  tcase_add_test(tc, is_equal_038);
+  tcase_add_test(tc, is_equal_039);
+  tcase_add_test(tc, is_equal_040);
+  tcase_add_test(tc, is_equal_041);
+  tcase_add_test(tc, is_equal_042);
+  tcase_add_test(tc, is_equal_043);
+  tcase_add_test(tc, is_equal_044);
+  tcase_add_test(tc, is_equal_045);
+  tcase_add_test(tc, is_equal_046);
+  tcase_add_test(tc, is_equal_047);
+  tcase_add_test(tc, is_equal_048);
+  tcase_add_test(tc, is_equal_049);
+  tcase_add_test(tc, is_equal_050);
+  tcase_add_test(tc, is_equal_051);
+  tcase_add_test(tc, is_equal_052);
+  tcase_add_test(tc, is_equal_053);
+  tcase_add_test(tc, is_equal_054);
+  tcase_add_test(tc, is_equal_055);
+  tcase_add_test(tc, is_equal_056);
+  tcase_add_test(tc, is_equal_057);
+  tcase_add_test(tc, is_equal_058);
+  tcase_add_test(tc, is_equal_059);
+  tcase_add_test(tc, is_equal_060);
+  tcase_add_test(tc, is_equal_061);
+  tcase_add_test(tc, is_equal_062);
+  tcase_add_test(tc, is_equal_063);
+  tcase_add_test(tc, is_equal_064);
+  tcase_add_test(tc, is_equal_065);
+  tcase_add_test(tc, is_equal_066);
+  tcase_add_test(tc, is_equal_067);
+  tcase_add_test(tc, is_equal_068);
+  tcase_add_test(tc, is_equal_069);
+  tcase_add_test(tc, is_equal_070);
+  tcase_add_test(tc, is_equal_071);
+  tcase_add_test(tc, is_equal_072);
+  tcase_add_test(tc, is_equal_073);
+  tcase_add_test(tc, is_equal_074);
+
+  suite_add_tcase(s, tc);
+  return s;
+}

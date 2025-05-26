@@ -1,0 +1,1608 @@
+#include "s21_tests.h"
+
+START_TEST(is_greater_001) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 0
+  value_1.bits[0] = 0b00000000000000000000000000000000;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  // 0
+  value_2.bits[0] = 0b00000000000000000000000000000000;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_002) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -0
+  value_1.bits[0] = 0b00000000000000000000000000000000;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000000000000000000000;
+
+  // -0
+  value_2.bits[0] = 0b00000000000000000000000000000000;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_003) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 0
+  value_1.bits[0] = 0b00000000000000000000000000000000;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  // -0
+  value_2.bits[0] = 0b00000000000000000000000000000000;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_004) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -0
+  value_1.bits[0] = 0b00000000000000000000000000000000;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000000000000000000000;
+
+  // 0
+  value_2.bits[0] = 0b00000000000000000000000000000000;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_005) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 0
+  value_1.bits[0] = 0b00000000000000000000000000000000;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  // 5
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_006) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 5
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  // 0
+  value_2.bits[0] = 0b00000000000000000000000000000000;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_007) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 0
+  value_1.bits[0] = 0b00000000000000000000000000000000;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  // -5
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_008) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -5
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000000000000000000000;
+
+  // 0
+  value_2.bits[0] = 0b00000000000000000000000000000000;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_009) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -0
+  value_1.bits[0] = 0b00000000000000000000000000000000;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000000000000000000000;
+
+  // 5
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_010) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 5
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  // -0
+  value_2.bits[0] = 0b00000000000000000000000000000000;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_011) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -0
+  value_1.bits[0] = 0b00000000000000000000000000000000;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000000000000000000000;
+
+  // -5
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_012) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -5
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000000000000000000000;
+
+  // -0
+  value_2.bits[0] = 0b00000000000000000000000000000000;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_013) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 5
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  // 1
+  value_2.bits[0] = 0b00000000000000000000000000000001;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_014) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 1
+  value_1.bits[0] = 0b00000000000000000000000000000001;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  // 5
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_015) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 5
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  // 5
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_016) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -5
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000000000000000000000;
+
+  // -1
+  value_2.bits[0] = 0b00000000000000000000000000000001;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_017) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -1
+  value_1.bits[0] = 0b00000000000000000000000000000001;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000000000000000000000;
+
+  // -5
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_018) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -5
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000000000000000000000;
+
+  // -5
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_019) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -5
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000000000000000000000;
+
+  // 5
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_020) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 5
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  // -5
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_021) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 5
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  // -2
+  value_2.bits[0] = 0b00000000000000000000000000000010;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_022) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -2
+  value_1.bits[0] = 0b00000000000000000000000000000010;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000000000000000000000;
+
+  // 5
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_023) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -5
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000000000000000000000;
+
+  // 2
+  value_2.bits[0] = 0b00000000000000000000000000000010;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_024) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 2
+  value_1.bits[0] = 0b00000000000000000000000000000010;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  // -5
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_025) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 0.5 scale 1
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000010000000000000000;
+
+  // 0.5 scale 1
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000010000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_026) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 0.5 scale 1
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000010000000000000000;
+
+  // 0.05 scale 2
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000100000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_027) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 0.05 scale 2
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000100000000000000000;
+
+  // 0.5 scale 1
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000010000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_028) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -0.5 scale 1
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000010000000000000000;
+
+  // -0.5 scale 1
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000010000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_029) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -0.5 scale 1
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000010000000000000000;
+
+  // -0.05 scale 2
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000100000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_030) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -0.05 scale 2
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000100000000000000000;
+
+  // -0.5 scale 1
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000010000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_031) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 0.5 scale 1
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000010000000000000000;
+
+  // -0.5 scale 1
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000010000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_032) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -0.5 scale 1
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000010000000000000000;
+
+  // 0.5 scale 1
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000010000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_033) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 0.05 scale 2
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000100000000000000000;
+
+  // -0.5 scale 1
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000010000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_034) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -0.5 scale 1
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000010000000000000000;
+
+  // 0.05 scale 2
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000100000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_035) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 0.5 scale 1
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000010000000000000000;
+
+  // -0.05 scale 2
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000100000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_036) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -0.5 scale 2
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000100000000000000000;
+
+  // 0.5 scale 1
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000010000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_037) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -0.1 scale 1
+  value_1.bits[0] = 0b00000000000000000000000000000001;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000010000000000000000;
+
+  // 0.5 scale 1
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000010000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_038) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -0.5 scale 1
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000010000000000000000;
+
+  // 0.1 scale 1
+  value_2.bits[0] = 0b00000000000000000000000000000001;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000010000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_039) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 0.1 scale 1
+  value_1.bits[0] = 0b00000000000000000000000000000001;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000010000000000000000;
+
+  // -0.5 scale 1
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000010000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_040) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 0.5 scale 1
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000010000000000000000;
+
+  // -0.1 scale 1
+  value_2.bits[0] = 0b00000000000000000000000000000001;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000010000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_041) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -0.01 scale 2
+  value_1.bits[0] = 0b00000000000000000000000000000001;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000100000000000000000;
+
+  // 0.5 scale 1
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000010000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_042) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -0.05 scale 2
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000100000000000000000;
+
+  // 0.1 scale 1
+  value_2.bits[0] = 0b00000000000000000000000000000001;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000010000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_043) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 0.01 scale 2
+  value_1.bits[0] = 0b00000000000000000000000000000001;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000100000000000000000;
+
+  // -0.5 scale 1
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000010000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_044) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 0.05 scale 2
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000100000000000000000;
+
+  // -0.1 scale 1
+  value_2.bits[0] = 0b00000000000000000000000000000001;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000010000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_045) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -0.1 scale 1
+  value_1.bits[0] = 0b00000000000000000000000000000001;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000010000000000000000;
+
+  // 0.05 scale 2
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000100000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_046) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -0.5 scale 1
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000010000000000000000;
+
+  // 0.01 scale 2
+  value_2.bits[0] = 0b00000000000000000000000000000001;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000100000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_047) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 0.1 scale 1
+  value_1.bits[0] = 0b00000000000000000000000000000001;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000010000000000000000;
+
+  // -0.05 scale 2
+  value_2.bits[0] = 0b00000000000000000000000000000101;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000100000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_048) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 0.5 scale 1
+  value_1.bits[0] = 0b00000000000000000000000000000101;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000010000000000000000;
+
+  // -0.01 scale 2
+  value_2.bits[0] = 0b00000000000000000000000000000001;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000100000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_049) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 79228162514264337593543950335
+  value_1.bits[0] = 0b11111111111111111111111111111111;
+  value_1.bits[1] = 0b11111111111111111111111111111111;
+  value_1.bits[2] = 0b11111111111111111111111111111111;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  // 79228162514264337593543950334
+  value_2.bits[0] = 0b11111111111111111111111111111110;
+  value_2.bits[1] = 0b11111111111111111111111111111111;
+  value_2.bits[2] = 0b11111111111111111111111111111111;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_050) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 79228162514264337593543950334
+  value_1.bits[0] = 0b11111111111111111111111111111110;
+  value_1.bits[1] = 0b11111111111111111111111111111111;
+  value_1.bits[2] = 0b11111111111111111111111111111111;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  // 79228162514264337593543950335
+  value_2.bits[0] = 0b11111111111111111111111111111111;
+  value_2.bits[1] = 0b11111111111111111111111111111111;
+  value_2.bits[2] = 0b11111111111111111111111111111111;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_051) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  value_1.bits[0] = 0b11111111111111111111111111111111;
+  value_1.bits[1] = 0b11111111111111111111111111111111;
+  value_1.bits[2] = 0b11111111111111111111111111111111;
+  value_1.bits[3] = 0b10000000000000000000000000000000;
+
+  value_2.bits[0] = 0b11111111111111111111111111111111;
+  value_2.bits[1] = 0b11111111111111111111111111111110;
+  value_2.bits[2] = 0b11111111111111111111111111111111;
+  value_2.bits[3] = 0b10000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_052) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  value_1.bits[0] = 0b11111111111111111111111111111111;
+  value_1.bits[1] = 0b11111111111111111111111111111110;
+  value_1.bits[2] = 0b11111111111111111111111111111111;
+  value_1.bits[3] = 0b10000000000000000000000000000000;
+
+  value_2.bits[0] = 0b11111111111111111111111111111111;
+  value_2.bits[1] = 0b11111111111111111111111111111111;
+  value_2.bits[2] = 0b11111111111111111111111111111111;
+  value_2.bits[3] = 0b10000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_053) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  value_1.bits[0] = 0b11111111111111111111111111111111;
+  value_1.bits[1] = 0b11111111111111111111111111111111;
+  value_1.bits[2] = 0b11111111111111111111111111111111;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  value_2.bits[0] = 0b11111111111111111111111111111111;
+  value_2.bits[1] = 0b11111111111111111111111111111111;
+  value_2.bits[2] = 0b11111111111111111111111111111110;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_054) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  value_1.bits[0] = 0b11111111111111111111111111111111;
+  value_1.bits[1] = 0b11111111111111111111111111111111;
+  value_1.bits[2] = 0b11111111111111111111111111111110;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  value_2.bits[0] = 0b11111111111111111111111111111111;
+  value_2.bits[1] = 0b11111111111111111111111111111111;
+  value_2.bits[2] = 0b11111111111111111111111111111111;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_055) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  value_1.bits[0] = 0b11111111111111111111111111111111;
+  value_1.bits[1] = 0b11111111111111111111111111111111;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  value_2.bits[0] = 0b11111111111111111111111111111110;
+  value_2.bits[1] = 0b11111111111111111111111111111111;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_056) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  value_1.bits[0] = 0b11111111111111111111111111111110;
+  value_1.bits[1] = 0b11111111111111111111111111111111;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  value_2.bits[0] = 0b11111111111111111111111111111111;
+  value_2.bits[1] = 0b11111111111111111111111111111111;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_057) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 1234567
+  value_1.bits[0] = 0b00000000000100101101011010000111;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000000000000000000000;
+
+  // 1234567.000 scale 3
+  value_2.bits[0] = 0b01001001100101011111111101011000;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000110000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_058) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 1234567.000 scale 3
+  value_1.bits[0] = 0b01001001100101011111111101011000;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000110000000000000000;
+
+  // 1234567
+  value_2.bits[0] = 0b00000000000100101101011010000111;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_059) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -1234567
+  value_1.bits[0] = 0b00000000000100101101011010000111;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000000000000000000000;
+
+  // -1234567.000 scale 3
+  value_2.bits[0] = 0b01001001100101011111111101011000;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000110000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_060) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -1234567.000 scale 3
+  value_1.bits[0] = 0b01001001100101011111111101011000;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000110000000000000000;
+
+  // -1234567
+  value_2.bits[0] = 0b00000000000100101101011010000111;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_061) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -1234567
+  value_1.bits[0] = 0b00000000000100101101011010000111;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000000000000000000000000;
+
+  // 1234567.000 scale 3
+  value_2.bits[0] = 0b01001001100101011111111101011000;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000000110000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_062) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 1234567.000 scale 3
+  value_1.bits[0] = 0b01001001100101011111111101011000;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000000110000000000000000;
+
+  // -1234567
+  value_2.bits[0] = 0b00000000000100101101011010000111;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000000000000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_063) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 1.2345678 scale=7
+  value_1.bits[0] = 0b00000000101111000110000101001110;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000001110000000000000000;
+
+  // 1.2345678000 scale=10
+  value_2.bits[0] = 0b11011111110111000001100010110000;
+  value_2.bits[1] = 0b00000000000000000000000000000010;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000010100000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_064) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 1.2345678000 scale=10
+  value_1.bits[0] = 0b11011111110111000001100010110000;
+  value_1.bits[1] = 0b00000000000000000000000000000010;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000010100000000000000000;
+
+  // 1.2345678 scale=7
+  value_2.bits[0] = 0b00000000101111000110000101001110;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000001110000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_065) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -1.2345678 scale=7
+  value_1.bits[0] = 0b00000000101111000110000101001110;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000001110000000000000000;
+
+  // -1.2345678000 scale=10
+  value_2.bits[0] = 0b11011111110111000001100010110000;
+  value_2.bits[1] = 0b00000000000000000000000000000010;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000010100000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_066) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -1.2345678000 scale=10
+  value_1.bits[0] = 0b11011111110111000001100010110000;
+  value_1.bits[1] = 0b00000000000000000000000000000010;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000010100000000000000000;
+
+  // -1.2345678 scale=7
+  value_2.bits[0] = 0b00000000101111000110000101001110;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000001110000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_067) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -1.2345678 scale=7
+  value_1.bits[0] = 0b00000000101111000110000101001110;
+  value_1.bits[1] = 0b00000000000000000000000000000000;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000001110000000000000000;
+
+  // 1.2345678000 scale=10
+  value_2.bits[0] = 0b11011111110111000001100010110000;
+  value_2.bits[1] = 0b00000000000000000000000000000010;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000010100000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_068) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 1.2345678000 scale=10
+  value_1.bits[0] = 0b11011111110111000001100010110000;
+  value_1.bits[1] = 0b00000000000000000000000000000010;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000010100000000000000000;
+
+  // -1.2345678 scale=7
+  value_2.bits[0] = 0b00000000101111000110000101001110;
+  value_2.bits[1] = 0b00000000000000000000000000000000;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b10000000000001110000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_069) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // 1234567890.0123456789 scale=10
+  value_1.bits[0] = 0b10101000111001001101010100010101;
+  value_1.bits[1] = 0b10101011010101001010100110001100;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b00000000000010100000000000000000;
+
+  // 1.0234567890123456789 scale=19
+  value_2.bits[0] = 0b01100000011011011000000100010101;
+  value_2.bits[1] = 0b10001110000010000111110101000101;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000100110000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(1, flag_error);
+}
+END_TEST
+
+START_TEST(is_greater_070) {
+  s21_decimal value_1, value_2;
+  int flag_error = 0;
+
+  // -1234567890.0123456789 scale=10
+  value_1.bits[0] = 0b10101000111001001101010100010101;
+  value_1.bits[1] = 0b10101011010101001010100110001100;
+  value_1.bits[2] = 0b00000000000000000000000000000000;
+  value_1.bits[3] = 0b10000000000010100000000000000000;
+
+  // 1.0234567890123456789 scale=19
+  value_2.bits[0] = 0b01100000011011011000000100010101;
+  value_2.bits[1] = 0b10001110000010000111110101000101;
+  value_2.bits[2] = 0b00000000000000000000000000000000;
+  value_2.bits[3] = 0b00000000000100110000000000000000;
+
+  flag_error = s21_is_greater(value_1, value_2);
+
+  ck_assert_int_eq(0, flag_error);
+}
+END_TEST
+
+Suite *suite_is_greater(void) {
+  Suite *s = suite_create("suite_is_greater");
+  TCase *tc = tcase_create("is_greater_tc");
+
+  tcase_add_test(tc, is_greater_001);
+  tcase_add_test(tc, is_greater_002);
+  tcase_add_test(tc, is_greater_003);
+  tcase_add_test(tc, is_greater_004);
+  tcase_add_test(tc, is_greater_005);
+  tcase_add_test(tc, is_greater_006);
+  tcase_add_test(tc, is_greater_007);
+  tcase_add_test(tc, is_greater_008);
+  tcase_add_test(tc, is_greater_009);
+  tcase_add_test(tc, is_greater_010);
+  tcase_add_test(tc, is_greater_011);
+  tcase_add_test(tc, is_greater_012);
+  tcase_add_test(tc, is_greater_013);
+  tcase_add_test(tc, is_greater_014);
+  tcase_add_test(tc, is_greater_015);
+  tcase_add_test(tc, is_greater_016);
+  tcase_add_test(tc, is_greater_017);
+  tcase_add_test(tc, is_greater_018);
+  tcase_add_test(tc, is_greater_019);
+  tcase_add_test(tc, is_greater_020);
+  tcase_add_test(tc, is_greater_021);
+  tcase_add_test(tc, is_greater_022);
+  tcase_add_test(tc, is_greater_023);
+  tcase_add_test(tc, is_greater_024);
+  tcase_add_test(tc, is_greater_025);
+  tcase_add_test(tc, is_greater_026);
+  tcase_add_test(tc, is_greater_027);
+  tcase_add_test(tc, is_greater_028);
+  tcase_add_test(tc, is_greater_029);
+  tcase_add_test(tc, is_greater_030);
+  tcase_add_test(tc, is_greater_031);
+  tcase_add_test(tc, is_greater_032);
+  tcase_add_test(tc, is_greater_033);
+  tcase_add_test(tc, is_greater_034);
+  tcase_add_test(tc, is_greater_035);
+  tcase_add_test(tc, is_greater_036);
+  tcase_add_test(tc, is_greater_037);
+  tcase_add_test(tc, is_greater_038);
+  tcase_add_test(tc, is_greater_039);
+  tcase_add_test(tc, is_greater_040);
+  tcase_add_test(tc, is_greater_041);
+  tcase_add_test(tc, is_greater_042);
+  tcase_add_test(tc, is_greater_043);
+  tcase_add_test(tc, is_greater_044);
+  tcase_add_test(tc, is_greater_045);
+  tcase_add_test(tc, is_greater_046);
+  tcase_add_test(tc, is_greater_047);
+  tcase_add_test(tc, is_greater_048);
+  tcase_add_test(tc, is_greater_049);
+  tcase_add_test(tc, is_greater_050);
+  tcase_add_test(tc, is_greater_051);
+  tcase_add_test(tc, is_greater_052);
+  tcase_add_test(tc, is_greater_053);
+  tcase_add_test(tc, is_greater_054);
+  tcase_add_test(tc, is_greater_055);
+  tcase_add_test(tc, is_greater_056);
+  tcase_add_test(tc, is_greater_057);
+  tcase_add_test(tc, is_greater_058);
+  tcase_add_test(tc, is_greater_059);
+  tcase_add_test(tc, is_greater_060);
+  tcase_add_test(tc, is_greater_061);
+  tcase_add_test(tc, is_greater_062);
+  tcase_add_test(tc, is_greater_063);
+  tcase_add_test(tc, is_greater_064);
+  tcase_add_test(tc, is_greater_065);
+  tcase_add_test(tc, is_greater_066);
+  tcase_add_test(tc, is_greater_067);
+  tcase_add_test(tc, is_greater_068);
+  tcase_add_test(tc, is_greater_069);
+  tcase_add_test(tc, is_greater_070);
+
+  suite_add_tcase(s, tc);
+  return s;
+}
